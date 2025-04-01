@@ -3,9 +3,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import TopNavbar from './components/TopNavbar';
 import BottomNavbar from './components/ButtomNavbar';
 import ProfilePicture from "./assets/picture1.png";
-import Picture1 from "./assets/picture2.jpg";
+import Picture1 from "./assets/picture2.png";
 import Picture2 from "./assets/picture3.jpg";
 import Picture3 from "./assets/picture4.jpg";
+import Picture4 from "./assets/picture5.png";
+import Picture5 from "./assets/picture6.png";
 import Video1 from "./assets/video1.mp4";
 
 function App() {
@@ -14,23 +16,37 @@ function App() {
       title: "Atma Cinemas",
       description: "A full-stack e-commerce solution built with React and Node.js",
       image: Picture3,
-      tools: ["Flutter", "Laravel"],
+      tools: ["Flutter", "Laravel", "MySQL", "REST API"],
       githubLink: "https://github.com/Dayaszs/1_D_Bioskop"
     },
     {
       title: "Atma AutoBid",
-      description: "A collaborative task management application with real-time updates",
+      description: "Atma AutoBid is an online auction platform that facilitates users in bidding and selling various products in a transparent and efficient manner. This website offers a user-friendly interface, real-time bidding features, and secure transactions to ensure a satisfying experience for both buyers and sellers.",
       image: Picture2,
-      tools: ["React", "Laravel"],
-      githubLink: "https://github.com/Vingorithm/PW_E_7_React"
+      tools: ["React", "Vercel", "Laravel"],
+      githubLink: "https://pw-e-7-react-one.vercel.app"
     },
     {
-      title: "Solar Energy Output Prediction",
-      description: "A responsive portfolio website built with modern technologies",
+      title: "Solar Energy Output Prediction Using CNN-LSTM",
+      description: "This project develops a prediction model for solar energy output using a combination of CNN and LSTM. By leveraging meteorological and irradiance data, the model provides accurate forecasts of solar energy production, aiding in operational planning and optimization for DAC energy companies.",
       image: Picture1,
-      tools: ["Python"],
+      tools: ["Python", "Google Colab", "Jupyter Notebook"],
       githubLink: "https://github.com/Vingorithm/DAC-ITS-Solar-Energy-Prediction-CNN-LSTM"
-    }
+    },
+    {
+      title: "Loop Wear",
+      description: "Loop Wear is a modern fashion brand that blends contemporary design with maximum comfort. This website showcases our latest collection, designed for an urban and dynamic lifestyle. Each product is crafted with attention to detail and quality, ensuring customer satisfaction with every purchase.",
+      image: Picture4,
+      tools: ["HTML", "CSS", "JavaScript", "React"],
+      githubLink: "https://loop-wear-wdc.netlify.app"
+    },
+    {
+      title: "Jakarta Air Quality Index (AQI) Classification",
+      description: "This project focuses on classifying the Air Quality Index (AQI) of Jakarta using data mining techniques. It employs machine learning algorithms to predict AQI categories based on the concentrations of key pollutants such as PM10, PM2.5, SO2, CO, O3, and NO2.",
+      image: Picture5,
+      tools: ["Python", "Google Colab", "Jupyter Notebook"],
+      githubLink: "https://github.com/Vingorithm/Jakarta-Air-Quality-Index-AQI-Classification.git"
+    } 
   ];
 
   return (
@@ -99,7 +115,7 @@ function App() {
                     <div className="p-4 bg-light rounded-3">
                       <h3 className="h4 mb-3">Technical Skills</h3>
                       <div className="d-flex flex-wrap gap-2">
-                        {["Python", "Java", "C", "React", "Laravel", "MySQL", "Git"].map((skill) => (
+                        {["Python", "Java", "C", "React", "Laravel", "MySQL", "Git", "Node JS", "C++", "Flutter", "Firebase", "CUDA", "Javascript"].map((skill) => (
                           <span key={skill} className="badge bg-primary p-2">{skill}</span>
                         ))}
                       </div>
