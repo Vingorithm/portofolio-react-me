@@ -14,7 +14,7 @@ function App() {
   const projects = [
     {
       title: "Atma Cinemas",
-      description: "A full-stack e-commerce solution built with React and Node.js",
+      description: "Atma Cinemas is a modern cinema booking application built with Flutter for the frontend and Laravel for the backend. It provides users with a seamless movie ticket booking experience, featuring real-time movie schedules, seat selection, and secure transactions. Integrated with MySQL and REST API, the platform ensures efficient data management and a smooth user experience.",
       image: Picture3,
       tools: ["Flutter", "Laravel", "MySQL", "REST API"],
       githubLink: "https://github.com/Dayaszs/1_D_Bioskop"
@@ -51,7 +51,6 @@ function App() {
 
   return (
     <div className="App">
-      <TopNavbar />
       <main className="main-content">
         {/* Landing Section */}
         <section id="home" className="section-fullscreen d-flex align-items-center position-relative">
@@ -71,7 +70,7 @@ function App() {
               <p className="lead mb-4 mx-auto" style={{ maxWidth: '800px' }}>
                 Welcome to my personal portfolio! I am Kevin, a Second Year Computer Science student with a passion and curiosity in the field of 
                 Information Technology and the ability to Solve Problems and Critical Thinking and have an interest in Artificial Intelligence (AI), 
-                and Data Analytics
+                and Software Development
               </p>
               <a href="#about" className="btn btn-primary btn-lg position-relative overflow-hidden">
                 Learn More About Me
@@ -105,7 +104,7 @@ function App() {
                       <h3 className="h4 mb-3">Background</h3>
                       <p>
                       Curiosity drives me, especially in the world of Information Technology. As a second-year Computer Science student, 
-                      I'm always exploring the many sides of IT, from Artificial Intelligence to Data Analytics. Problem-solving is my jam, and 
+                      I'm always exploring the many sides of IT, from Artificial Intelligence to Software Development. Problem-solving is my jam, and 
                       I love diving into challenges with a mix of critical thinking and innovation. My goal is to take these skills further, contributing to tech breakthroughs that shape the future. 
                       I’m all about leveraging tech to make things better, smarter, and more efficient.
                       </p>
@@ -191,6 +190,10 @@ function App() {
               .project-card {
                 transition: transform 0.3s ease, box-shadow 0.3s ease;
                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
               }
 
               .project-card:hover {
@@ -241,11 +244,30 @@ function App() {
                 font-size: 1.5rem;
               }
 
+              .card-body {
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+              }
+
+              .card-text {
+                flex-grow: 1;
+                height: 120px;
+                overflow-y: auto;
+              }
+
+              .tools-container {
+                height: 80px;
+                overflow-y: auto;
+                margin-bottom: 1rem;
+              }
+
               .project-link {
                 border-width: 2px;
                 font-weight: 500;
                 padding: 0.75rem 1.5rem;
                 transition: all 0.3s ease;
+                margin-top: auto;
               }
 
               .project-link:hover {
@@ -266,8 +288,6 @@ function App() {
           </style>
         </section>
       </main>
-      <BottomNavbar />
-
       <style>
         {`
           .main-content {
