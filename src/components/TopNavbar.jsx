@@ -1,6 +1,45 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 const TopNavbar = () => {
+  const [activeSection, setActiveSection] = useState("home");
+  const [scrolled, setScrolled] = useState(false);
+
+  // Track scroll position and current section
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setScrolled(scrollPosition > 50);
+      
+      // Determine which section is currently in view
+      const sections = ["home", "about", "projects"];
+      
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          // If the section is in the viewport
+          if (rect.top <= 150 && rect.bottom >= 150) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Set navbar styles based on current section and scroll position
+  const navbarClass = activeSection === "home" && !scrolled
+    ? "navbar navbar-expand-lg fixed-top py-3 navbar-transparent"
+    : "navbar navbar-expand-lg fixed-top bg-white py-3 shadow-sm";
+
+  // Set text color based on section
+  const textClass = activeSection === "home" && !scrolled
+    ? "text-white"
+    : "text-dark";
+
   return (
     <>
       <style>
@@ -9,15 +48,15 @@ const TopNavbar = () => {
             transition: all 0.3s ease-in-out;
           }
 
-          .navbar-brand {
-            color: #000;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            cursor: pointer;
+          .navbar-transparent {
+            background-color: transparent !important;
+            box-shadow: none !important;
           }
 
-          .navbar-brand:hover {
-            color: #007bff;
+          .navbar-brand {
+            transition: color 0.3s ease;
+            cursor: pointer;
+            font-weight: bold;
           }
 
           .navbar-toggler {
@@ -25,15 +64,18 @@ const TopNavbar = () => {
           }
 
           .nav-link {
-            color: #555;
             font-weight: 500;
             text-decoration: none;
             transition: color 0.3s ease;
             cursor: pointer;
           }
 
-          .nav-link:hover {
-            color: #007bff;
+          .navbar-transparent .nav-link:hover {
+            color: rgba(255, 255, 255, 0.8) !important;
+          }
+
+          .navbar:not(.navbar-transparent) .nav-link:hover {
+            color: #007bff !important;
           }
 
           .btn-contact {
@@ -55,11 +97,21 @@ const TopNavbar = () => {
             background-color: #004085;
             transform: scale(0.98);
           }
+          
+          .btn-contact-transparent {
+            background-color: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+          }
+          
+          .btn-contact-transparent:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+          }
         `}
       </style>
-      <nav className="navbar navbar-expand-lg fixed-top bg-white py-3 shadow-sm">
+      <nav className={navbarClass}>
         <div className="container d-flex justify-content-between align-items-center">
-          <a className="navbar-brand fs-4" href="#home">
+          <a className={`navbar-brand fs-4 ${textClass}`} href="#home">
             <strong>Kevin Philips Tanamas</strong>
           </a>
 
@@ -75,25 +127,25 @@ const TopNavbar = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav mx-auto">
               <li className="nav-item px-3">
-                <a className="nav-link" href="#home">
+                <a className={`nav-link ${textClass}`} href="#home">
                   Home
                 </a>
               </li>
               <li className="nav-item px-3">
-                <a className="nav-link" href="#about">
+                <a className={`nav-link ${textClass}`} href="#about">
                   About Me
                 </a>
               </li>
               <li className="nav-item px-3">
-                <a className="nav-link" href="#projects">
+                <a className={`nav-link ${textClass}`} href="#projects">
                   Projects
                 </a>
               </li>
             </ul>
           </div>
           <a 
-            className="btn-contact" 
-            href="mailto:your_email@example.com?subject=Hello%20Kevin&body=Hi%20Kevin,%20I%20would%20like%20to%20contact%20you%20regarding..."
+            className={activeSection === "home" && !scrolled ? "btn-contact btn-contact-transparent" : "btn-contact"} 
+            href="mailto:kevinkevin.kk92@gmail.com?subject=Hello%20Kevin&body=Hi%20Kevin,%20I%20would%20like%20to%20contact%20you%20regarding..."
           >
             Contact Me
           </a>

@@ -1,8 +1,36 @@
-import React, { useState } from "react";
-import { Linkedin, Github, Twitter, Instagram, Mail } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { Linkedin, Github, Instagram, Mail } from 'lucide-react';
 
 const BottomNavbar = () => {
   const [activeLink, setActiveLink] = useState(null);
+  const [activeSection, setActiveSection] = useState("home");
+  const [scrolled, setScrolled] = useState(false);
+
+  // Track scroll position and current section
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setScrolled(scrollPosition > 50);
+      
+      // Determine which section is currently in view
+      const sections = ["home", "about", "projects"];
+      
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          // If the section is in the viewport
+          if (rect.top <= 150 && rect.bottom >= 150) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const socialLinks = [
     {
@@ -31,9 +59,19 @@ const BottomNavbar = () => {
     }
   ];
 
+  // Set footer styles based on current section
+  const navClass = activeSection === "home" && !scrolled
+    ? "fixed-bottom-navbar transparent"
+    : "fixed-bottom-navbar";
+
+  // Set text color based on section
+  const textClass = activeSection === "home" && !scrolled
+    ? "#ffffff"
+    : "#6c757d";
+
   return (
-    <nav className="fixed-bottom-navbar">
-      <div className="bottom-nav-wrapper">
+    <nav className={navClass}>
+      <div className={`bottom-nav-wrapper ${activeSection === "home" && !scrolled ? "transparent-wrapper" : ""}`}>
         <div className="nav-links-container">
           {socialLinks.map((link, index) => (
             <a
@@ -45,7 +83,7 @@ const BottomNavbar = () => {
               onMouseEnter={() => setActiveLink(index)}
               onMouseLeave={() => setActiveLink(null)}
               style={{
-                color: activeLink === index ? link.color : '#6c757d'
+                color: activeLink === index ? link.color : textClass
               }}
             >
               <div className="icon-container">
@@ -68,6 +106,7 @@ const BottomNavbar = () => {
           right: 0;
           z-index: 1030;
           width: 100%;
+          transition: all 0.3s ease-in-out;
         }
 
         .bottom-nav-wrapper {
@@ -76,6 +115,13 @@ const BottomNavbar = () => {
           border-top: 1px solid rgba(0, 0, 0, 0.1);
           padding: 0.5rem 0;
           width: 100%;
+          transition: all 0.3s ease-in-out;
+        }
+
+        .transparent-wrapper {
+          background: rgba(0, 0, 0, 0.3);
+          backdrop-filter: blur(10px);
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .nav-links-container {

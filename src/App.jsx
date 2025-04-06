@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import TopNavbar from './components/TopNavbar';
 import BottomNavbar from './components/ButtomNavbar';
@@ -11,6 +11,20 @@ import Picture5 from "./assets/picture6.png";
 import Video1 from "./assets/video1.mp4";
 
 function App() {
+  // Forcing recheck of section visibility on page load
+  useEffect(() => {
+    const handleScroll = () => {
+      // Create a custom scroll event to trigger section detection
+      window.dispatchEvent(new CustomEvent('scroll'));
+    };
+    
+    // Trigger once on component mount
+    handleScroll();
+    
+    // Also set a small timeout to ensure everything is rendered
+    setTimeout(handleScroll, 100);
+  }, []);
+
   const projects = [
     {
       title: "Atma Cinemas",
@@ -51,6 +65,7 @@ function App() {
 
   return (
     <div className="App">
+      <TopNavbar />
       <main className="main-content">
         {/* Landing Section */}
         <section id="home" className="section-fullscreen d-flex align-items-center position-relative">
@@ -106,7 +121,7 @@ function App() {
                       Curiosity drives me, especially in the world of Information Technology. As a second-year Computer Science student, 
                       I'm always exploring the many sides of IT, from Artificial Intelligence to Software Development. Problem-solving is my jam, and 
                       I love diving into challenges with a mix of critical thinking and innovation. My goal is to take these skills further, contributing to tech breakthroughs that shape the future. 
-                      I’m all about leveraging tech to make things better, smarter, and more efficient.
+                      I'm all about leveraging tech to make things better, smarter, and more efficient.
                       </p>
                     </div>
                   </div>
@@ -288,16 +303,28 @@ function App() {
           </style>
         </section>
       </main>
+      <BottomNavbar />
       <style>
         {`
+          .App {
+            position: relative;
+          }
+          
           .main-content {
-            padding-top: 76px;
-            padding-bottom: 76px;
+            padding-top: 0; /* Remove top padding to prevent whitespace */
+            padding-bottom: 60px; /* Adjust for bottom navbar */
           }
 
           .section-fullscreen {
-            min-height: calc(100vh - 152px);
+            min-height: 100vh; /* Make sections full viewport height */
             padding: 4rem 0;
+          }
+          
+          #home {
+            height: 100vh; /* Force home section to be full viewport height */
+            width: 100%;
+            position: relative;
+            padding-top: 76px; /* Account for navbar height */
           }
 
           .background-video {
@@ -322,6 +349,7 @@ function App() {
 
           .container {
             z-index: 2;
+            position: relative;
           }
 
           .btn-primary {
@@ -347,7 +375,7 @@ function App() {
 
           @media (max-width: 991.98px) {
             .section-fullscreen {
-              min-height: calc(100vh - 152px);
+              min-height: 100vh;
               padding: 3rem 0;
             }
           }
