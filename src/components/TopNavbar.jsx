@@ -137,6 +137,11 @@ const TopNavbar = () => {
                 </a>
               </li>
               <li className="nav-item px-3">
+                <a className={`nav-link ${textClass}`} href="#organizations">
+                  Experience
+                </a>
+              </li>
+              <li className="nav-item px-3">
                 <a className={`nav-link ${textClass}`} href="#projects">
                   Projects
                 </a>

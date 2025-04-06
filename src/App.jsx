@@ -9,19 +9,18 @@ import Picture3 from "./assets/picture4.jpg";
 import Picture4 from "./assets/picture5.png";
 import Picture5 from "./assets/picture6.png";
 import Video1 from "./assets/video1.mp4";
+import Org1 from "./assets/org1.png";
+import Org2 from "./assets/org2.png";
+import Org3 from "./assets/org3.png";
+import Org4 from "./assets/org4.jpg";
+import Org5 from "./assets/org5.jpg";
 
 function App() {
-  // Forcing recheck of section visibility on page load
   useEffect(() => {
     const handleScroll = () => {
-      // Create a custom scroll event to trigger section detection
       window.dispatchEvent(new CustomEvent('scroll'));
     };
-    
-    // Trigger once on component mount
     handleScroll();
-    
-    // Also set a small timeout to ensure everything is rendered
     setTimeout(handleScroll, 100);
   }, []);
 
@@ -62,6 +61,65 @@ function App() {
       githubLink: "https://github.com/Vingorithm/Jakarta-Air-Quality-Index-AQI-Classification.git"
     } 
   ];
+
+  // New organizations/committees data
+  const organizations = [
+    {
+      name: "Asistant Lecturer",
+      role: "Object-Oriented Programming Assistant Lecturer",
+      period: "2025",
+      description: "As an Assistant Lecturer for Object-Oriented Programming, I supported the main lecturer in delivering course materials, assisting students during lab sessions, and grading assignments. I helped students understand core OOP concepts such as classes, inheritance, polymorphism, and abstraction through real-world examples and hands-on practices.",
+      image: Org4,
+      achievements: [
+        "Guided 100+ students during lab sessions to improve understanding of OOP concepts",
+        "Helped streamline assignment grading, reducing feedback time by 30%"
+      ]
+    },
+    {
+      name: "Kelompok Studi Pemrograman",
+      role: "C and Java Student Mentor",
+      period: "2023 - 2025",
+      description: "As a C and Java Programming Language Mentor, I developed a tailored module for students and provided hands-on teaching and guidance to new learners. I aimed to equip students with foundational knowledge and support their learning journey in programming. Through this role, I contributed to fostering a supportive learning environment for aspiring programmers.",
+      image: Org1,
+      achievements: [
+        "Developed a beginner-friendly module for C and Java used by over 50+ students",
+        "Mentored many students, with 80% showing significant improvement in basic programming skills"
+      ]
+    },
+    {
+      name: "Himpunan Mahasiswa Informatika",
+      role: "Student Council of Akademik dan Prestasi",
+      period: "2022 - 2024",
+      description: "As a Student Council of Akademik dan Prestasi (APRES), I was entrusted with the task of guiding and mentoring first-year students in organizational matters, particularly in the realms of academia and achievement.",
+      image: Org2,
+      achievements: [
+        "Organized UTS and UAS tutorial sessions attended by 70+ students across semesters",
+        "Initiated academic community service programs to assist underprivileged students in local areas"
+      ]
+    },    
+    {
+      name: "Informatics Festival",
+      role: "Secretariat Coordinator",
+      period: "2024",
+      description: "As the Secretariat Coordinator, responsibilities include managing participant groups, crafting captions, handling participant data, managing social media, and facilitating communication between the organizing committee and participants.",
+      image: Org3,
+      achievements: [
+        "Successfully coordinated 4 major events during Informatics Festival 2024",
+        "Achieved high average participant turnout across all events, with positive feedback from attendees"
+      ]
+    },
+    {
+      name: "Asistant Lecturer",
+      role: "Artificial Intelligence Assistant Lecturer",
+      period: "2024",
+      description: "As an Assistant Lecturer for the Artificial Intelligence course, I was responsible for preparing lab materials, supporting students in understanding algorithms such as search strategies, neural networks, and decision trees, and assisting in grading assignments and projects. I also provided mentorship to students undertaking mini-projects in AI.",
+      image: Org5,
+      achievements: [
+        "Facilitated weekly lab sessions for 80+ students focusing on core AI algorithms",
+        "Provided guidance for 20+ student projects on AI applications, improving project quality and completion rate"
+      ]
+    }
+  ];  
 
   return (
     <div className="App">
@@ -141,8 +199,107 @@ function App() {
           </div>
         </section>
 
+        {/* Organizations & Committees Section */}
+        <section id="organizations" className="section-fullscreen d-flex align-items-center bg-light">
+          <div className="container">
+            <h2 className="text-center display-4 fw-bold mb-5">Organizations & Committees</h2>
+            <div className="row g-4 justify-content-center">
+              {organizations.map((org, index) => (
+                <div key={index} className="col-md-6 col-lg-4">
+                  <div className="card h-100 border-0 org-card">
+                    <div className="position-relative overflow-hidden image-container">
+                      <img 
+                        src={org.image} 
+                        className="card-img-top org-image" 
+                        alt={org.name}
+                      />
+                      <div className="period-badge">
+                        {org.period}
+                      </div>
+                    </div>
+                    <div className="card-body p-4">
+                      <h5 className="card-title fw-bold mb-1">{org.name}</h5>
+                      <p className="role-text mb-3">{org.role}</p>
+                      <p className="card-text text-muted mb-3">{org.description}</p>
+                      <h6 className="achievements-title">Key Achievements:</h6>
+                      <ul className="achievements-list">
+                        {org.achievements.map((achievement, aIndex) => (
+                          <li key={aIndex}>{achievement}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <style>
+            {`
+              .org-card {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                height: 100%;
+              }
+
+              .org-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+              }
+
+              .image-container {
+                height: 200px;
+                position: relative;
+              }
+
+              .org-image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+
+              .period-badge {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                background-color: rgba(0, 123, 255, 0.8);
+                color: white;
+                padding: 0.3rem 0.8rem;
+                font-weight: 500;
+                font-size: 0.9rem;
+              }
+
+              .role-text {
+                color: #0d6efd;
+                font-weight: 500;
+                font-size: 1rem;
+              }
+
+              .achievements-title {
+                font-size: 1rem;
+                margin-bottom: 0.5rem;
+                font-weight: 600;
+              }
+
+              .achievements-list {
+                padding-left: 1.2rem;
+                margin-bottom: 0;
+              }
+
+              .achievements-list li {
+                margin-bottom: 0.4rem;
+                font-size: 0.9rem;
+              }
+
+              .achievements-list li:last-child {
+                margin-bottom: 0;
+              }
+            `}
+          </style>
+        </section>
+
        {/* Projects Section */}
-        <section id="projects" className="section-fullscreen d-flex align-items-center bg-light">
+        <section id="projects" className="section-fullscreen d-flex align-items-center bg-white">
           <div className="container">
             <h2 className="text-center display-4 fw-bold mb-5">My Projects</h2>
             <div className="row g-4 justify-content-center">
