@@ -141,7 +141,7 @@ function App() {
             <div className="text-center text-white">
               <h1 className="display-3 fw-bold mb-4">Hello, I'm Kevin</h1>
               <p className="lead mb-4 mx-auto" style={{ maxWidth: '800px' }}>
-                Welcome to my personal portfolio! I am Kevin, a Second Year Computer Science student with a passion and curiosity in the field of 
+                Welcome to my personal portfolio! I am Kevin, a Third Year Computer Science student with a passion and curiosity in the field of 
                 Information Technology and the ability to Solve Problems and Critical Thinking and have an interest in Artificial Intelligence (AI), 
                 and Software Development
               </p>
@@ -176,7 +176,7 @@ function App() {
                     <div className="p-4 bg-light rounded-3">
                       <h3 className="h4 mb-3">Background</h3>
                       <p>
-                      Curiosity drives me, especially in the world of Information Technology. As a second-year Computer Science student, 
+                      Curiosity drives me, especially in the world of Information Technology. As a third-year Computer Science student, 
                       I'm always exploring the many sides of IT, from Artificial Intelligence to Software Development. Problem-solving is my jam, and 
                       I love diving into challenges with a mix of critical thinking and innovation. My goal is to take these skills further, contributing to tech breakthroughs that shape the future. 
                       I'm all about leveraging tech to make things better, smarter, and more efficient.
