@@ -1,8 +1,25 @@
-# React + Vite
+# 💼 Personal Portfolio – Kevin Philips Tanamas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🌐 Live Website
+👉 [kevinphilipstanamas.vercel.app](https://kevinphilipstanamas.vercel.app/)
 
-Currently, two official plugins are available:
+## 📝 Overview
+This is a **personal portfolio website** built using **React.js**, designed to showcase my skills, experience, and projects as a developer. It highlights my journey, technical stack, selected works, and contact information in a clean, responsive, and modern layout.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
+- ⚛️ Built with **React.js**
+- 🎨 Sleek and responsive UI/UX design
+- 🧑‍💼 About Me section introducing professional background
+- 🛠️ Tech stack and tools display
+- 📂 Project showcase with links to GitHub repositories
+- 📞 Contact form with integrated email handling
+
+## 🛠️ Tech Stack
+- **Frontend Framework**: React.js
+- **Styling**: Bootstrap
+- **Deployment**: Vercel
+- **Animation & UI Enhancements**: Framer Motion, React Icons
+
+## 📸 Preview
+![image](https://github.com/user-attachments/assets/57202c5f-5e10-40ed-adda-e6934b8f3016)
+
